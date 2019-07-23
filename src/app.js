@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './routers/AppRouter';
+import AppRouter from './routes/AppRouter';
 
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
