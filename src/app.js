@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './routes/AppRouter';
 
+import 'react-dates/lib/css/_datepicker.css'
+import 'react-dates/initialize';
+
 import configureStore from './store/configureStore';
 import { addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
