@@ -29,8 +29,8 @@ export class ExpenseListFilters extends React.Component {
       <div>
         <input 
           type="text" 
-          value={this.props.filters.text} 
-          onChange={this.onTextChange} 
+          value={this.props.filters.text}
+          onChange={this.onTextChange}
         />
         <select
           value={this.props.filters.sortBy}
