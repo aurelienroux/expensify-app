@@ -6,7 +6,6 @@
   "author": "Aurélien Roux <aureroux13@me.com>",
   "license": "MIT",
   "scripts": {
-    "serve": "live-server public/",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
@@ -23,13 +22,8 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "enzyme-to-json": "^3.3.5",
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "jest": "^24.8.0",
-    "live-server": "^1.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
@@ -41,16 +35,20 @@
     "react-modal": "^3.8.1",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-test-renderer": "^16.8.6",
     "redux": "^4.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "validator": "^10.11.0",
-    "webpack": "^4.29.3",
-    "webpack-dev-server": "^3.7.2"
+    "webpack": "^4.29.3"
   },
   "devDependencies": {
-    "webpack-cli": "^3.2.3"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.7.2"
   }
 }
