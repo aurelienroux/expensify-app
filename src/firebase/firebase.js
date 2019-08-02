@@ -16,29 +16,68 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().set({
-  name: 'Andrew',
-  age: 26,
-  stressLevel: 6,
-  job: {
-    title: 'software dev',
-    company: 'Google'
-  },
-  location: {
-    city: 'Philly',
-    country: 'USA'
-  }
-}).then(() => {
-  console.log('data is saved');
-}).catch((e) => {
-  console.log('error: ', e);
+database.ref().on('value', (snapshot) => {
+  const val = snapshot.val();
+  console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
+}, (e) => {
+  console.log('error subscription: ', e);
 });
 
-database.ref().update({
-  stressLevel: 9,
-  'job/company': 'Amazon',
-  'location/city': 'Seattle'
-});
+setTimeout(() => {
+  database.ref('name').set('Mike')
+}, 3000);
+
+// const onValueChange = database.ref().on('value', (snapshot) => {
+//   console.log(snapshot.val());
+// }, (e) => {
+//   console.log('Error with subscription', e);
+// });
+
+// setTimeout(() => {
+//   database.ref('age').set(29);
+// }, 3500);
+
+// setTimeout(() => {
+//   database.ref().off('value', onValueChange);
+// }, 7000);
+
+// setTimeout(() => {
+//   database.ref('age').set(30);
+// }, 10500);
+
+// database.ref()
+//   .once('value')
+//   .then((snapshot) => {
+//     const val = snapshot.val();
+//     console.log(val);
+//   })
+//   .catch((e) => {
+//     console.log('error: ', e);
+//   });
+
+// database.ref().set({
+//   name: 'Andrew',
+//   age: 26,
+//   stressLevel: 6,
+//   job: {
+//     title: 'software dev',
+//     company: 'Google'
+//   },
+//   location: {
+//     city: 'Philly',
+//     country: 'USA'
+//   }
+// }).then(() => {
+//   console.log('data is saved');
+// }).catch((e) => {
+//   console.log('error: ', e);
+// });
+
+// database.ref().update({
+//   stressLevel: 9,
+//   'job/company': 'Amazon',
+//   'location/city': 'Seattle'
+// });
 
 // database.ref('teach')
 //   .remove()
