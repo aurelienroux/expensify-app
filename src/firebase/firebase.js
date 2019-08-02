@@ -33,4 +33,4 @@ database.ref('location/city').set('NY');
 database.ref('attributes').set({
   height: 180,
   weight: 200
-})
+});
