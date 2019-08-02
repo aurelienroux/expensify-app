@@ -16,25 +16,35 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-// database.ref().set({
-//   name: 'Andrew',
-//   age: 26,
-//   teach: true,
-//   location: {
-//     city: 'Philly',
-//     country: 'USA'
-//   }
-// }).then(() => {
-//   console.log('data is saved');
-// }).catch((e) => {
-//   console.log('error: ', e);
-// });
+database.ref().set({
+  name: 'Andrew',
+  age: 26,
+  stressLevel: 6,
+  job: {
+    title: 'software dev',
+    company: 'Google'
+  },
+  location: {
+    city: 'Philly',
+    country: 'USA'
+  }
+}).then(() => {
+  console.log('data is saved');
+}).catch((e) => {
+  console.log('error: ', e);
+});
 
-database.ref('teach')
-  .remove()
-  .then(() => {
-    console.log('remove successful');
-  })
-  .catch((e) => {
-    console.log('error in removing: ', e);
-  })
+database.ref().update({
+  stressLevel: 9,
+  'job/company': 'Amazon',
+  'location/city': 'Seattle'
+});
+
+// database.ref('teach')
+//   .remove()
+//   .then(() => {
+//     console.log('remove successful');
+//   })
+//   .catch((e) => {
+//     console.log('error in removing: ', e);
+//   })
