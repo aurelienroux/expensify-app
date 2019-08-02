@@ -14,6 +14,23 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-firebase.database().ref().set({
-  name: 'testing app'
+const database = firebase.database();
+
+database.ref().set({
+  name: 'Andrew',
+  age: 26,
+  teach: true,
+  location: {
+    city: 'Philly',
+    country: 'USA'
+  }
 });
+
+// database.ref().set('this is data');
+
+database.ref('age').set(27);
+database.ref('location/city').set('NY');
+database.ref('attributes').set({
+  height: 180,
+  weight: 200
+})
