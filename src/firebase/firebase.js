@@ -24,13 +24,22 @@ database.ref().set({
     city: 'Philly',
     country: 'USA'
   }
-});
+}).then(() => {
+  console.log('data is saved!');
+}).catch((e) => {
+  console.log('error: ', e);
+})
 
 // database.ref().set('this is data');
 
-database.ref('age').set(27);
-database.ref('location/city').set('NY');
+// database.ref('age').set(27);
+// database.ref('location/city').set('NY');
+
 database.ref('attributes').set({
   height: 180,
   weight: 200
-});
+}).then(() => {
+  console.log('attributes are logged');
+}).catch((e) => {
+  console.log('error for attributes: ', e);
+})
