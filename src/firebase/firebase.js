@@ -16,16 +16,38 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().on('value', (snapshot) => {
-  const val = snapshot.val();
-  console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
-}, (e) => {
-  console.log('error subscription: ', e);
+database.ref('expenses').push({
+  description: 'one',
+  note: 'note',
+  amount: 100,
+  createdAt: 1200
 });
 
-setTimeout(() => {
-  database.ref('name').set('Mike')
-}, 3000);
+database.ref('expenses').push({
+  description: 'two',
+  note: 'nothing',
+  amount: 30000,
+  createdAt: 2000
+});
+
+database.ref('expenses').push({
+  description: 'three',
+  note: 'another note',
+  amount: 321,
+  createdAt: 1234444321
+});
+
+
+// database.ref().on('value', (snapshot) => {
+//   const val = snapshot.val();
+//   console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
+// }, (e) => {
+//   console.log('error subscription: ', e);
+// });
+
+// setTimeout(() => {
+//   database.ref('name').set('Mike')
+// }, 3000);
 
 // const onValueChange = database.ref().on('value', (snapshot) => {
 //   console.log(snapshot.val());
