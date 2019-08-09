@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './routes/AppRouter';
+import AppRouter, { history } from './routes/AppRouter';
 import { startSetExpenses } from './actions/expenses'
 
 import configureStore from './store/configureStore';
@@ -19,17 +19,26 @@ const jsx = (
     <AppRouter />
   </Provider>
 );
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'));
-});
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('in');
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
+    });
   } else {
-    console.log('out');
+    renderApp();
+    history.push('/');
   }
 });
